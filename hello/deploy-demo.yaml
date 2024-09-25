@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-sd-deployment
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k8s-sd
+  template:
+    metadata:
+      labels:
+        app: k8s-sd
+    spec:
+      containers:
+      - name: k8s-simple-demo
+        image: unaipg/k8s-simple-demo:latest
+        env:
+        - name: username
+          value: John
+        ports:
+          - containerPort: 8000
+

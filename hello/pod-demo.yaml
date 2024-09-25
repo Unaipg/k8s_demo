@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: k8s-sd-pod
+  labels: 
+    app: k8s-sd
+spec:
+  containers:
+  - name: k8s-sd-pod
+    image: unaipg/k8s-simple-demo:latest
+    env:
+      - name: username
+        value: John
+    ports:
+      - containerPort: 8000
+
+
+

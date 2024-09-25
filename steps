@@ -1,0 +1,34 @@
+# List the namespaces
+kubectl get ns
+# Create our namespace
+kubectl create -f ns-demo.yaml
+
+
+# show pods
+kubectl -n k8s-simple-demo get pods
+# create a pod
+kubectl -n k8s-simple-demo apply -f pod-demo.yaml
+# create the second pod
+kubectl -n k8s-simple-demo apply -f pod2-demo.yaml
+# Show pod info and talk about the life cicle of the pod
+kubectl -n k8s-simple-demo describe pod k8s-sd-pod
+# From here we get the ip and the open port and we use it to test with the viewer
+# Now we delete the pod
+kubectl -n k8s-simple-demo delete pod k8s-sd-pod
+# And now the audience has noone to watch, it's just sad and lonely D:
+
+# Show deployments
+kubectl -n k8s-simple-demo get deployments
+# Create a new deployment
+kubectl -n k8s-simple-demo apply -f deploy-demo.yaml
+# Delete a pod now and show how it's created AGAIN, crazy
+
+# Now the service
+kubectl -n k8s-simple-demo get services
+
+kubectl -n k8s-simple-demo apply -f service-demo.yaml
+
+kubectl -n k8s-simple-demo describe services k8s-sd-service
+
+# Change the selector and refresh
+kubectl -n k8s-simple-demo apply -f service-demo.yaml
